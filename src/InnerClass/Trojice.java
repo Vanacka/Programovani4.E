@@ -2,11 +2,29 @@ package InnerClass;
 
 import lombok.Data;
 
+import java.util.Iterator;
+
 @Data
 public  class Trojice implements Iterable<String>{
     String a;
     String b;
     String c;
+
+    class InterniIterator implements Iterator<String> {
+        int pocet;
+
+        public boolean hasNext(){
+            return pocet < 3;
+        }
+
+        public String next(){
+            switch (pocet++){
+                case 0: return a;
+                case 1: return b;
+                default: return c;
+            }
+        }
+    }
 
 
     public Trojice(String a, String b, String c) {
